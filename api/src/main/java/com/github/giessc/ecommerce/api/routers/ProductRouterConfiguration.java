@@ -1,6 +1,6 @@
 package com.github.giessc.ecommerce.api.routers;
 
-import com.github.giessc.ecommerce.api.handlers.ItemHandler;
+import com.github.giessc.ecommerce.api.handlers.ProductHandler;
 import com.github.giessc.ecommerce.api.utils.Routes;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,13 +13,13 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration(proxyBeanMethods = false)
-public class ItemRouterConfiguration {
+public class ProductRouterConfiguration {
     private static final RequestPredicate ACCEPT_JSON = accept(MediaType.APPLICATION_JSON);
 
     @Bean
-    public RouterFunction<ServerResponse> itemRouter(ItemHandler itemHandler) {
+    public RouterFunction<ServerResponse> productRouter(ProductHandler productHandler) {
         return route()
-            .POST(Routes.ITEM.get(), ACCEPT_JSON, itemHandler::createItem)
+            .POST(Routes.ITEM.get(), ACCEPT_JSON, productHandler::createProduct)
             .build();
     }
 }
