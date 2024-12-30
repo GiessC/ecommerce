@@ -1,9 +1,6 @@
 package com.github.giessc.ecommerce.api.models.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.lang.Nullable;
 
 import java.util.List;
@@ -12,21 +9,19 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ProductDTO {
-    @jakarta.annotation.Nullable
     @Nullable
     private String productSlug;
     private String name;
     private String description;
     private double standardPrice;
-    private String imageLocation;
     private List<String> tags;
 
     public ProductDTO(ProductDatabaseDTO productDatabaseDTO) {
         this.name = productDatabaseDTO.getName();
         this.description = productDatabaseDTO.getDescription();
         this.standardPrice = productDatabaseDTO.getStandardPrice();
-        this.imageLocation = productDatabaseDTO.getImageLocation();
-        this.tags = List.of(productDatabaseDTO.getTags());
+        this.tags = productDatabaseDTO.getTags();
     }
 }
