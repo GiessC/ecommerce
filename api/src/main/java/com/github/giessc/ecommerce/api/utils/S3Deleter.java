@@ -27,8 +27,9 @@ public class S3Deleter implements IFileDeleter {
     }
 
     private void throwIfUnsuccessful(DeleteObjectResponse response) throws FileDeleterException {
-        if (!response.sdkHttpResponse().isSuccessful()) {
-            throw new FileDeleterException("Failed to delete file from S3: " + response.sdkHttpResponse().statusText());
+        if (response.sdkHttpResponse().isSuccessful()) {
+            return;
         }
+        throw new FileDeleterException("Failed to delete file from S3: " + response.sdkHttpResponse().statusText());
     }
 }
