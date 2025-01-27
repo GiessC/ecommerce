@@ -4,6 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Menu from "./Menu.tsx";
 import {useOpenable} from "../../hooks/useOpenable.tsx";
 import Search from "./Search.tsx";
+import ShoppingCartButton from "./ShoppingCartButton.tsx";
 
 export default function MenuBar() {
     const { isOpen: isMenuOpen, setIsOpen: setIsMenuOpen, toggleOpen: toggleMenuOpen } = useOpenable();
@@ -17,6 +18,7 @@ export default function MenuBar() {
                         <MenuIcon />
                     </IconButton>
                     <Search />
+                    <ShoppingCartButton />
                 </Toolbar>
             </AppBar>
         </Box>
