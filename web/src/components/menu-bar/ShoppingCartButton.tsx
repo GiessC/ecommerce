@@ -1,7 +1,7 @@
 import {ShoppingCartOutlined} from "@mui/icons-material";
 import {IconButton} from "@mui/material";
 import React from "react";
-import ShoppingCartMenu from "../shopping-cart/ShoppingCartMenu.tsx";
+import ShoppingCartPopover from "../shopping-cart/ShoppingCartPopover.tsx";
 
 export default function ShoppingCartButton() {
     const [anchorEl, setAnchorEl] = React.useState<Element | null>(null);
@@ -19,7 +19,7 @@ export default function ShoppingCartButton() {
             <IconButton onClick={handleClick}>
                 <ShoppingCartOutlined className={'text-white'} />
             </IconButton>
-            <ShoppingCartMenu anchorEl={anchorEl} onClose={handleClose} />
+            <ShoppingCartPopover anchorEl={anchorEl} onClose={handleClose} />
         </>
     );
 }
