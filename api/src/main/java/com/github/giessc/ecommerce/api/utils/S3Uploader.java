@@ -18,10 +18,10 @@ public class S3Uploader implements IFileUploader {
     private final String bucketName;
 
     @Override
-    public Mono<FileResponseDTO> getUrlForUpload(FileRequest request) {
+    public Mono<FileResponseDTO> getUrlForUpload(String fileName) {
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
             .bucket(bucketName)
-            .key(request.getFilePath())
+            .key(S3FilePathGetter.getFilePathFromFileName(fileName))
             .build();
         PutObjectPresignRequest putObjectPresignRequest = PutObjectPresignRequest.builder()
             .signatureDuration(Duration.ofMinutes(10))

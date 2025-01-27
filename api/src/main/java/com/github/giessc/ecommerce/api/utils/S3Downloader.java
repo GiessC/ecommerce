@@ -21,7 +21,7 @@ public class S3Downloader implements IFileDownloader {
     public Mono<FileResponseDTO> getUrlForDownload(FileRequest request) {
         GetObjectRequest getObjectRequest = GetObjectRequest.builder()
             .bucket(bucketName)
-            .key(request.getFilePath())
+            .key(request.getFileName())
             .build();
         GetObjectPresignRequest getObjectPresignRequest = GetObjectPresignRequest.builder()
             .signatureDuration(Duration.ofMinutes(10))

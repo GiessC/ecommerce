@@ -18,7 +18,7 @@ public class S3Deleter implements IFileDeleter {
     public void delete(FileRequest request) throws FileDeleterException {
         DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
             .bucket(bucketName)
-            .key(request.getFilePath())
+            .key(request.getFileName())
             .build();
 
         DeleteObjectResponse response = s3Client.deleteObject(deleteObjectRequest);

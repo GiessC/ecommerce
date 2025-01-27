@@ -1,7 +1,8 @@
 package com.github.giessc.ecommerce.api.utils;
 
 public enum Routes {
-    ITEM("/items");
+    PRODUCT("/products"),
+    UPLOAD_PRODUCT_IMAGE("/products/image");
 
     private final String route;
 

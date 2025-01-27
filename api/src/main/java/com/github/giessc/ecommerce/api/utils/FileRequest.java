@@ -6,5 +6,5 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public abstract class FileRequest {
-    private final String filePath;
+    private final String fileName;
 }

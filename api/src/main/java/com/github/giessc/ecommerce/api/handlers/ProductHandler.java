@@ -2,6 +2,7 @@ package com.github.giessc.ecommerce.api.handlers;
 
 import com.github.giessc.ecommerce.api.models.domain.Product;
 import com.github.giessc.ecommerce.api.models.dto.CreateProductDTO;
+import com.github.giessc.ecommerce.api.models.dto.UploadProductImageRequestDTO;
 import com.github.giessc.ecommerce.api.models.mapper.CreateProductDTOToProduct;
 import com.github.giessc.ecommerce.api.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,24 +14,26 @@ import reactor.core.publisher.Mono;
 @Component
 public class ProductHandler {
     private final ProductService productService;
-    private final CreateProductDTOToProduct mapper;
+    private final CreateProductDTOToProduct createProductDTOToProductMapper;
 
     public ProductHandler(@Autowired ProductService productService, @Autowired CreateProductDTOToProduct mapper) {
         this.productService = productService;
-        this.mapper = mapper;
-    }
-
-    public Mono<ServerResponse> getProductImageUploadUrl(ServerRequest request) {
-        // TODO
-        return Mono.empty();
+        this.createProductDTOToProductMapper = mapper;
     }
 
     public Mono<ServerResponse> createProduct(ServerRequest request) {
         return request.bodyToMono(CreateProductDTO.class)
             .flatMap(createProductDTO -> {
-                Product product = mapper.map(createProductDTO);
+                Product product = createProductDTOToProductMapper.map(createProductDTO);
                 return this.productService.createProduct(product)
                     .flatMap(createdProduct -> ServerResponse.ok().bodyValue(createdProduct));
             });
+    }
+
+    public Mono<ServerResponse> uploadProductImage(ServerRequest request) {
+        return request.bodyToMono(UploadProductImageRequestDTO.class)
+            .flatMap(uploadProductImageRequestDTO -> this.productService.uploadProductImage(uploadProductImageRequestDTO)
+                .flatMap(createdProduct -> ServerResponse.ok().bodyValue(createdProduct))
+            );
     }
 }

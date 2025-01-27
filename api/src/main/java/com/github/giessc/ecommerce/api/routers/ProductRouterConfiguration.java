@@ -19,7 +19,8 @@ public class ProductRouterConfiguration {
     @Bean
     public RouterFunction<ServerResponse> productRouter(ProductHandler productHandler) {
         return route()
-            .POST(Routes.ITEM.get(), ACCEPT_JSON, productHandler::createProduct)
+            .POST(Routes.PRODUCT.get(), ACCEPT_JSON, productHandler::createProduct)
+            .POST(Routes.UPLOAD_PRODUCT_IMAGE.get(), ACCEPT_JSON, productHandler::uploadProductImage)
             .build();
     }
 }
