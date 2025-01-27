@@ -1,12 +1,12 @@
 import Box from "@mui/material/Box";
 import {Popover} from "@mui/material";
 
-interface ShoppingCartMenuProps {
+interface ShoppingCartPopoverProps {
     anchorEl: Element | null;
     onClose: () => void;
 }
 
-export default function ShoppingCartMenu({ anchorEl, onClose }: ShoppingCartMenuProps) {
+export default function ShoppingCartPopover({ anchorEl, onClose }: ShoppingCartPopoverProps) {
     const isOpen = Boolean(anchorEl);
 
     return (
