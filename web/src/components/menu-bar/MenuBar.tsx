@@ -18,6 +18,7 @@ export default function MenuBar() {
                         <MenuIcon />
                     </IconButton>
                     <Search />
+                    <div className={'flex-grow'} />
                     <ShoppingCartButton />
                 </Toolbar>
             </AppBar>

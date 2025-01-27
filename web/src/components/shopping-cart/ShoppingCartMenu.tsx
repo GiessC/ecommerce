@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import {Menu, MenuItem} from "@mui/material";
+import {Popover} from "@mui/material";
 
 interface ShoppingCartMenuProps {
     anchorEl: Element | null;
@@ -11,16 +11,14 @@ export default function ShoppingCartMenu({ anchorEl, onClose }: ShoppingCartMenu
 
     return (
         <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-            <Menu
+            <Popover
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 anchorEl={anchorEl}
                 open={isOpen}
                 onClose={onClose}
             >
-                <MenuItem onClick={onClose}>
-                </MenuItem>
-            </Menu>
+            </Popover>
         </Box>
     );
 }
