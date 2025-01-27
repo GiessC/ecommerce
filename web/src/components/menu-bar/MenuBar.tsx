@@ -3,6 +3,7 @@ import {AppBar, IconButton, Toolbar} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from "./Menu.tsx";
 import {useOpenable} from "../../hooks/useOpenable.tsx";
+import Search from "./Search.tsx";
 
 export default function MenuBar() {
     const { isOpen: isMenuOpen, setIsOpen: setIsMenuOpen, toggleOpen: toggleMenuOpen } = useOpenable();
@@ -11,10 +12,11 @@ export default function MenuBar() {
         <Box>
             <AppBar position={'static'}>
                 <Toolbar>
+                    <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
                     <IconButton size={'large'} aria-label={'Menu'} onClick={toggleMenuOpen}>
                         <MenuIcon />
                     </IconButton>
-                    <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
+                    <Search />
                 </Toolbar>
             </AppBar>
         </Box>
