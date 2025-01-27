@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import {AppBar, IconButton, Toolbar} from "@mui/material";
+import {AppBar, IconButton, Toolbar, Typography} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from "./Menu.tsx";
 import {useOpenable} from "../../hooks/useOpenable.tsx";
@@ -17,6 +17,7 @@ export default function MenuBar() {
                     <IconButton size={'large'} aria-label={'Menu'} onClick={toggleMenuOpen}>
                         <MenuIcon />
                     </IconButton>
+                    <a href={'/'}><Typography variant={'body1'}>Home</Typography></a>
                     <Search />
                     <div className={'flex-grow'} />
                     <ShoppingCartButton />
