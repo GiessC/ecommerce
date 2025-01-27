@@ -1,8 +1,9 @@
-import {createBrowserRouter, Outlet, RouterProvider as ReactRouterProvider} from "react-router";
+import {createBrowserRouter, RouterProvider as ReactRouterProvider} from "react-router";
 import NotFound from "./errors/NotFound.tsx";
 import Home from "./index.tsx";
 import Root from "./root.tsx";
 import ErrorLayout from "./errors/layout.tsx";
+import AppLayout from "./layout.tsx";
 
 const router = createBrowserRouter([
     {
@@ -11,7 +12,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/',
-        element: <Outlet />,
+        element: <AppLayout />,
         children: [
             {
                 index: true,
