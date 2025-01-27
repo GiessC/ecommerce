@@ -1,11 +1,11 @@
 import {Typography} from "@mui/material";
-import ProductList from "../components/item-list/ProductList.tsx";
+import ProductList from "../features/product/components/ProductList.tsx";
 import Product from "../types/product/Product.ts";
 
 export default function Home() {
     const products: Product[] = [
         new Product({
-            id: '1',
+            slug: '1',
             name: 'Shirt',
             description: 'A shirt',
             priceUSD: 10,
@@ -13,7 +13,7 @@ export default function Home() {
             tags: ['Clothing', 'Shirt']
         }),
         new Product({
-            id: '2',
+            slug: '2',
             name: 'Pants',
             description: 'Pants',
             priceUSD: 20,
@@ -21,7 +21,7 @@ export default function Home() {
             tags: ['Clothing', 'Pants']
         }),
         new Product({
-            id: '3',
+            slug: '3',
             name: 'Shoes',
             description: 'Shoes',
             priceUSD: 30,
@@ -29,7 +29,7 @@ export default function Home() {
             tags: ['Clothing', 'Shoes']
         }),
         new Product({
-            id: '4',
+            slug: '4',
             name: 'Shoes',
             description: 'Shoes',
             priceUSD: 30,

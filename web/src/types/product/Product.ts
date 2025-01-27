@@ -1,7 +1,7 @@
 import ProductSize, {ProductSizeJSON} from './ProductSize.ts';
 
 export interface ProductJSON {
-    id: string;
+    slug: string;
     name: string;
     description: string;
     priceUSD: number;
@@ -11,7 +11,7 @@ export interface ProductJSON {
 }
 
 export default class Product {
-    id: string;
+    slug: string;
     name: string;
     description: string;
     priceUSD: number;
@@ -19,13 +19,17 @@ export default class Product {
     imageURL: string;
     tags: string[];
 
-    constructor({ id, name, description, priceUSD, sizes, imageURL, tags }: ProductJSON) {
-        this.id = id;
+    constructor({ slug, name, description, priceUSD, sizes, imageURL, tags }: ProductJSON) {
+        this.slug = slug;
         this.name = name;
         this.description = description;
         this.priceUSD = priceUSD;
         this.sizes = sizes ? sizes.map((size) => new ProductSize(size)) : [];
         this.imageURL = imageURL;
         this.tags = tags;
+    }
+
+    public getLink(): string {
+        return `/app/products/${this.slug}`;
     }
 }
