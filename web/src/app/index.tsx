@@ -1,6 +1,7 @@
 import {Typography} from "@mui/material";
 import ProductList from "../features/product/components/ProductList.tsx";
 import Product from "../types/product/Product.ts";
+import Box from "@mui/material/Box";
 
 export default function Home() {
     const products: Product[] = [
@@ -39,9 +40,9 @@ export default function Home() {
     ];
 
     return (
-        <>
-            <Typography variant='h3'>Clothing Store</Typography>
+        <Box className={'flex flex-col p-8'}>
+            <Typography className={'pb-4'} variant='h3'>Clothing Store</Typography>
             <ProductList products={products} />
-        </>
+        </Box>
     );
 }
