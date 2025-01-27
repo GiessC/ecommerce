@@ -11,8 +11,17 @@ import {ShoppingCartOutlined} from "@mui/icons-material";
 function useProductPage() {
     const { slug } = useParams();
     const { data, error, isLoading } = useProductBySlug(slug);
+    const { addToCart } = useProduct(data);
 
-    return { product: data, slug, error, isLoading };
+    async function addProductToCart(formValues: AddToCartRequest) {
+        const { slug } = formValues;
+        if (!slug) {
+            return;
+        }
+        await addToCart(formValues);
+    }
+
+    return { product: data, slug, error, isLoading, addProductToCart };
 }
 
 function useProductBySlug(slug?: string) {
@@ -26,15 +35,7 @@ function useProductBySlug(slug?: string) {
 }
 
 export default function ProductPage() {
-    const { product, slug, error, isLoading } = useProductPage();
-    const { addToCart } = useProduct(product);
-
-    async function addProductToCart(formValues: AddToCartRequest) {
-        if (!product?.slug) {
-            return;
-        }
-        await addToCart(formValues);
-    }
+    const { product, slug, error, isLoading, addProductToCart } = useProductPage();
 
     if (error) {
         return (
