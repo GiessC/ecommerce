@@ -5,7 +5,7 @@ import {useQuery} from "@tanstack/react-query";
 import ProductApi, {addToCartSchema} from "../../../features/product/api/ProductApi.ts";
 import {useProduct} from "../../../features/product/hooks/useProduct.tsx";
 import Form from "../../../components/ui/form/Form.tsx";
-import {AddToCartRequest} from "../../../types/product/AddToCartRequest.ts";
+import {AddToCartRequest} from "../../../types/shopping-cart/AddToCartRequest.ts";
 import {ShoppingCartOutlined} from "@mui/icons-material";
 
 function useProductPage() {

@@ -1,7 +1,7 @@
 import Product from "../../../types/product/Product.ts";
 import {useNavigate} from "react-router";
 import productApi from "../api/ProductApi.ts";
-import {AddToCartRequest} from "../../../types/product/AddToCartRequest.ts";
+import {AddToCartRequest} from "../../../types/shopping-cart/AddToCartRequest.ts";
 
 export function useProduct(product?: Product | null) {
     const navigate = useNavigate();
