@@ -1,8 +1,6 @@
 import Product from "../../../types/product/Product.ts";
-import {Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography} from "@mui/material";
+import {Card, CardActionArea, CardContent, CardMedia, Typography} from "@mui/material";
 import {useProduct} from "../hooks/useProduct.tsx";
-import {ShoppingCartOutlined} from "@mui/icons-material";
-import React from "react";
 
 interface ProductListItemProps {
     className?: string;
@@ -10,12 +8,7 @@ interface ProductListItemProps {
 }
 
 export default function ProductListItem({product, className=''}: ProductListItemProps) {
-    const { goTo, addToCart } = useProduct(product);
-
-    function onAddToCart(event: React.MouseEvent<HTMLButtonElement | null>) {
-        event.stopPropagation();
-        addToCart();
-    }
+    const { goTo } = useProduct(product);
 
     return (
         <Card className={`p-4 w-max h-max ${className} cursor-pointer`} key={product.slug}>
@@ -28,9 +21,6 @@ export default function ProductListItem({product, className=''}: ProductListItem
                     <Typography variant={'subtitle2'}>${product.priceUSD}</Typography>
                 </CardContent>
             </CardActionArea>
-            <CardActions>
-                <Button variant={'outlined'} onClick={onAddToCart} fullWidth><ShoppingCartOutlined />{' '}Add to cart</Button>
-            </CardActions>
         </Card>
     );
 }

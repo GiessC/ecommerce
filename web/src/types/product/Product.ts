@@ -1,11 +1,11 @@
-import ProductSize, {ProductSizeJSON} from './ProductSize.ts';
+import {ProductSize} from './ProductSize.ts';
 
 export interface ProductJSON {
     slug: string;
     name: string;
     description: string;
     priceUSD: number;
-    sizes?: ProductSizeJSON[];
+    sizes?: ProductSize[];
     imageURL: string;
     tags: string[];
 }
@@ -24,7 +24,7 @@ export default class Product {
         this.name = name;
         this.description = description;
         this.priceUSD = priceUSD;
-        this.sizes = sizes ? sizes.map((size) => new ProductSize(size)) : [];
+        this.sizes = sizes ? sizes : [];
         this.imageURL = imageURL;
         this.tags = tags;
     }
