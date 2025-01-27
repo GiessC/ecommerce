@@ -1,7 +1,9 @@
 import Product from '../../../types/product/Product.ts';
 import {ProductSize} from '../../../types/product/ProductSize.ts';
 import {z} from 'zod';
-import {AddToCartRequest} from '../../../types/product/AddToCartRequest.ts';
+import {AddToCartRequest} from '../../../types/shopping-cart/AddToCartRequest.ts';
+import {getItem, setItem} from '../../../lib/localStorage.ts';
+import ShoppingCart, {ShoppingCartJSON} from '../../../types/shopping-cart/ShoppingCart.ts';
 
 async function getProductBySlug(slug: string): Promise<Product | null> {
     return new Product({
@@ -24,8 +26,13 @@ export const addToCartSchema = z.object({
 });
 
 
-async function addToCart({ slug, size }: AddToCartRequest): Promise<void> {
-    console.log(slug, size);
+async function addToCart(request: AddToCartRequest): Promise<ShoppingCart> {
+    const currentShoppingCart = getItem('shopping-cart');
+    const cartJSON: ShoppingCartJSON = currentShoppingCart ? JSON.parse(currentShoppingCart) : { products: [], total: 0 };
+    const cart = new ShoppingCart(cartJSON);
+    cart.addProduct(request);
+    setItem('shopping-cart', JSON.stringify(cart));
+    return cart;
 }
 
 const ProductApi = {
