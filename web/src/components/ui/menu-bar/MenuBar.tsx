@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import {AppBar, IconButton, Toolbar, Typography} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from "./Menu.tsx";
-import {useOpenable} from "../../hooks/useOpenable.tsx";
+import {useOpenable} from "../../../hooks/useOpenable.tsx";
 import Search from "./Search.tsx";
 import ShoppingCartButton from "./ShoppingCartButton.tsx";
 
