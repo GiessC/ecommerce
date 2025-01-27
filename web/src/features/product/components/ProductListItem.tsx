@@ -18,8 +18,8 @@ export default function ProductListItem({product, className=''}: ProductListItem
     }
 
     return (
-        <Card className={`p-4 w-max h-max ${className} cursor-pointer`} key={product.slug} onClick={goTo}>
-            <CardActionArea>
+        <Card className={`p-4 w-max h-max ${className} cursor-pointer`} key={product.slug}>
+            <CardActionArea onClick={goTo}>
                 <CardMedia className={'max-w-48 max-h-48'}>
                     <img src={product.imageURL} alt={product.name} />
                 </CardMedia>
